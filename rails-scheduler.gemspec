@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Antonio Tapiador del Dujo"]
   s.email       = ["atapiador@dit.upm.es"]
   s.homepage    = "https://github.com/atd/rails-scheduler"
-  s.summary     = "TODO: Summary of RailsScheduler."
-  s.description = "TODO: Description of RailsScheduler."
+  s.summary     = "Provide a Rails application with support for scheduled events"
+  s.description = "Scheduler support: daily, weekly and montly repetitions"
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

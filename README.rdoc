@@ -1,3 +1,5 @@
-= RailsScheduler
+= Rails Scheduler
 
-This project rocks and uses MIT-LICENSE.
+This project provides your application with support for scheduler events
+
+Implementing http://www.codeproject.com/KB/database/sqlscheduleselector.aspx
