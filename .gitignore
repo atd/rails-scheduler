@@ -1,4 +1,7 @@
-*.gem
-.bundle
+.bundle/
 Gemfile.lock
-pkg/*
+log/*.log
+pkg/
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
