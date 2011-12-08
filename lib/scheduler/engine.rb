@@ -1,4 +1,4 @@
-module Schedule
+module Scheduler
   class Engine < ::Rails::Engine #:nodoc:
 
     initializer "scheduler.active_record" do
