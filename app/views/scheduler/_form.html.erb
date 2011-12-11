@@ -1,0 +1,33 @@
+<div class="scheduler_form">
+  <%= f.label :frequency %>
+  <%= f.select :frequency, Scheduler.frequency_options, {}, :class => 'scheduler-frequency' %>
+
+  <div id="scheduler-options">
+    <div id="scheduler-frequency-0">
+      <%= t 'scheduler.frequency.one_off.form.message' %>
+    </div>
+  
+    <div id="scheduler-frequency-1">
+      Comming soon..
+    </div>
+
+    <div id="scheduler-frequency-2">
+      <span id="scheduler-weekly-week">
+      <%= raw t('scheduler.frequency.weekly.form.every_week',
+                :form_field => f.number_field(:interval, :size => 1)) %>
+      </span>
+
+      <div id="scheduler-weekly-days">
+        <% 7.times do |d| %>
+          <%= check_box_tag "#{ f.object_name }[interval_days][]",
+                            d,
+                            f.object.interval_days.include?(d) %>
+          <%= I18n.l Date.today.beginning_of_week + d, :format => "%a" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="scheduler-frequency-3">
+      Comming soon..
+    </div>
+</div>

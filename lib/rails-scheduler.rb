@@ -1,9 +1,10 @@
 require "scheduler/version"
+require 'recurrence'
 
 module Scheduler
   autoload :ActiveRecord, 'scheduler/active_record'
   autoload :Model,        'scheduler/model'
-  # Your code goes here...
 end
 
+require 'scheduler'
 require 'scheduler/engine'

@@ -1,0 +1,17 @@
+es:
+  scheduler:
+    frequency:
+      one_off:
+        form:
+          message: "La actividad no se volverá a repetir"
+          option:  "ninguna"
+      daily:
+        form:
+          option:  "diaria"
+      weekly:
+         form:
+           every_week: "Cada %{form_field} semana(s) en los siguientes días:"
+           option: "semanal"
+      monthly:
+         form:
+           option: "mensual"
