@@ -1,4 +1,4 @@
-require "scheduler/version"
+require 'scheduler/version'
 require 'recurrence'
 
 module Scheduler

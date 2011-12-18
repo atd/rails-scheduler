@@ -21,8 +21,9 @@
         <% 7.times do |d| %>
           <%= check_box_tag "#{ f.object_name }[interval_days][]",
                             d,
-                            f.object.interval_days.include?(d) %>
-          <%= I18n.l Date.today.beginning_of_week + d, :format => "%a" %>
+                            f.object.interval_days.include?(d),
+                            :id => "event_interval_days_#{ d }" %>
+          <span><%= I18n.l Date.today.beginning_of_week + d, :format => "%a" %></span>
         <% end %>
       </div>
     </div>

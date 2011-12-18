@@ -12,6 +12,12 @@ Scheduler.form.init = function(form, startDate) {
   form.on("change", "select.scheduler-frequency", function(){
     Scheduler.form.showFrequency($(this).val());
   });
+
+  if (startDate) {
+    // check day of week
+    dayOfWeek = (startDate.getDay() + 6) % 7; // monday is 0 in Rails
+    form.find('#event_interval_days_' + dayOfWeek).attr('checked','checked');
+  }
 }
 
 Scheduler.form.showFrequency = function(value) {
