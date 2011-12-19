@@ -6,6 +6,7 @@ class AddScheduler < ActiveRecord::Migration
       t.date     :start_date
       t.date     :end_date
       t.integer  :frequency, :default => 0
+      t.integer  :days,      :default => 0
       t.integer  :interval
       t.integer  :interval_flag, :default => 0
     end

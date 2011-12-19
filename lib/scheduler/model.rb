@@ -12,7 +12,7 @@ module Scheduler
         [ :weekly ].include? record.frequency_sym
       }
       
-      validates_numericality_of :interval_flag,
+      validates_numericality_of :days,
                                 :greater_than => 0,
                                 :if => lambda { |record|
         [ :weekly ].include? record.frequency_sym
@@ -30,24 +30,51 @@ module Scheduler
       end
 
       # Get [ 0, 1, 6 ] (monday, tuesday, sunday) from byte
-      def interval_days
+      def week_days
         7.times.map{ |i|
-          interval_flag[i] > 0 ?
+          days[i] > 0 ?
           i :
           nil
         }.compact
       end
 
-      def interval_days_sym
-        interval_days.map{ |d|
+      def week_day
+        week_days.first
+      end
+
+      def week_days_sym
+        week_days.map{ |d|
           Date::DAYS_INTO_WEEK.invert[d]
         }
       end
 
+      def week_day_sym
+        week_days_sym.first
+      end
+
       # Convert [ 0, 1, 6 ] (monday, tuesday, sunday) to byte
-      def interval_days= days
-        self.interval_flag =
-          days.map{ |d| 2 ** d.to_i }.inject(0, &:+)
+      def week_days= ds
+        self.days =
+          ds.map{ |d| 2 ** d.to_i }.inject(0, &:+)
+      end
+
+      def week_day= day
+        self.week_days = Array.wrap(day)
+      end
+
+      def week_day_order
+        interval_flag
+      end
+
+      def week_day_order_sym
+        index = interval_flag
+        index -= 1 if index > 0
+
+        Scheduler::ORDER[index]
+      end
+
+      def week_day_order= order
+        self.interval_flag = order
       end
 
       def recurrence
@@ -57,7 +84,14 @@ module Scheduler
                            :starts   => start_date.to_date,
                            :until    => end_date.try(:to_date),
                            :interval => interval,
-                           :on       => interval_days_sym })
+                           :on       => week_days_sym })
+        when :monthly
+          Recurrence.new({ :every    => :month,
+                           :starts   => start_date.to_date,
+                           :until    => end_date.try(:to_date),
+                           :interval => interval,
+                           :on       => week_day_order_sym,
+                           :weekday => week_day_sym })
         end
       end
 

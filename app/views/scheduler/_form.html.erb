@@ -1,6 +1,6 @@
 <div class="scheduler_form">
   <%= f.label :frequency %>
-  <%= f.select :frequency, Scheduler.frequency_options, {}, :class => 'scheduler-frequency' %>
+  <%= f.select :frequency, frequency_options, {}, :class => 'scheduler-frequency' %>
 
   <div id="scheduler-options">
     <div id="scheduler-frequency-0">
@@ -19,16 +19,20 @@
 
       <div id="scheduler-weekly-days">
         <% 7.times do |d| %>
-          <%= check_box_tag "#{ f.object_name }[interval_days][]",
+          <%= check_box_tag "#{ f.object_name }[week_days][]",
                             d,
-                            f.object.interval_days.include?(d),
-                            :id => "event_interval_days_#{ d }" %>
+                            f.object.week_days.include?(d),
+                            :id => "event_week_days_#{ d }" %>
           <span><%= I18n.l Date.today.beginning_of_week + d, :format => "%a" %></span>
         <% end %>
       </div>
     </div>
 
     <div id="scheduler-frequency-3">
-      Comming soon..
+       <%= raw t('scheduler.frequency.monthly.form.week_day',
+                 :order_field => f.select(:week_day_order, week_day_order_options),
+                 :week_field  => f.select(:week_day, week_day_options),
+                 :interval_field => f.number_field(:interval, :size => 1))
+       %>
     </div>
 </div>

@@ -15,3 +15,9 @@ es:
       monthly:
          form:
            option: "mensual"
+           week_day: "El %{order_field} %{week_field} de cada %{interval_field} mes(es)"
+           week_day_order_option:
+             "1": "primer"
+             "2": "segundo"
+             "3": "tercer"
+             "-1": "último"
