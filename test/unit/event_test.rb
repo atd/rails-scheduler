@@ -9,7 +9,7 @@ class EventTest < ActiveSupport::TestCase
     assert Factory(:event).start_date.present?
   end
 
-  test "interval_days" do
+  test "week_days" do
     e = Factory(:event)
 
     battery = {
@@ -23,11 +23,11 @@ class EventTest < ActiveSupport::TestCase
     }
 
     battery.each_pair do |flag, days|
-      e.interval_flag = flag
-      assert e.interval_days.eql?(days)
+      e.days = flag
+      assert e.week_days.eql?(days)
 
-      e.interval_days = days
-      assert e.interval_flag.eql?(flag)
+      e.week_days = days
+      assert e.days.eql?(flag)
     end
   end
 end
