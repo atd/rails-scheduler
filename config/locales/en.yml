@@ -1,0 +1,23 @@
+en:
+  scheduler:
+    frequency:
+      one_off:
+        form:
+          message: "Event does not have recurrence"
+          option:  "one-off"
+      daily:
+        form:
+          option:  "daily"
+      weekly:
+         form:
+           every_week: "Every %{form_field} week(s) on the following days:"
+           option: "weekly"
+      monthly:
+         form:
+           option: "monthly"
+           week_day: "The %{order_field} %{week_field} of every %{interval_field} month(s)"
+           week_day_order_option:
+             "1": "first"
+             "2": "second"
+             "3": "third"
+             "-1": "last"
