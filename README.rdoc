@@ -1,5 +1,43 @@
 = Rails Scheduler
 
-This project provides your application with support for scheduler events
+This project provides your Rails application with support for scheduled events
 
-Implementing http://www.codeproject.com/KB/database/sqlscheduleselector.aspx
+* Provide any model with database-stored scheduler (weekly, monthly, etc..)
+* Database queries to obtain instance between dates
+* Build Javascript powered scheduler forms
+* I18n and l10n support
+
+== Install
+
+Just add +gem 'rails-scheduler'+ to your Gemfile and +bundle update+
+
+== Usage
+
+A sample migration is available at db/migrate
+
+Then, just add to your model:
+
+  class Event < ActiveRecord::Base
+    scheduler
+  end
+
+Now, you can create events such as:
+
+  event = Event.create(:start_at => Time.now,
+                       :end_at => Time.now + 3.hours,
+                       :frequency => 2,     # weekly
+                       :interval  => 1,     # every 1 week
+                       :week_days => [ 1 ]) # on monday  
+
+  Event.between(Date.today, Date.today + 15) #=> [ next monday, next monday + 1 week, etc.. ] 
+
+
+This example is based on an Event class. However, it Rails Scheduler works with any
+model, provided the suitable database fields are created
+
+== ToDo
+
+* Daily and yearly frequencies
+* Generator that copies the migration, at least.
+* Use SQL for database query optimization.
+  See http://www.codeproject.com/KB/database/sqlscheduleselector.aspx
