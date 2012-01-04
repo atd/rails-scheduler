@@ -9,7 +9,7 @@ This project provides your Rails application with support for scheduled events
 
 == Install
 
-Just add +gem 'rails-scheduler'+ to your Gemfile and +bundle update+
+Just add <tt>gem 'rails-scheduler'</tt> to your +Gemfile+ and <tt>bundle update</tt>
 
 == Usage
 
