@@ -77,6 +77,14 @@ module Scheduler
         self.interval_flag = order
       end
 
+      # Array including all the dates this Scheduler has ocurrences
+      # between st and en
+      def ocurrences(st, en = nil)
+        recurrence ?
+          recurrence.events(:starts => st, :until => en) :
+          (start_at.to_date..end_at.to_date).to_a
+      end
+
       def recurrence
         case frequency_sym
         when :weekly
