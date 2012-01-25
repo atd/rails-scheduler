@@ -1,5 +1,7 @@
 = Rails Scheduler
 
+{<img src="https://gemnasium.com/atd/rails-scheduler.png" />}[https://gemnasium.com/atd/rails-scheduler]
+
 This project provides your Rails application with support for scheduled events
 
 * Provide any model with database-stored scheduler (weekly, monthly, etc..)
