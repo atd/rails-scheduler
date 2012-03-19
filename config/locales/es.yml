@@ -6,18 +6,32 @@ es:
           message: "La actividad no se volverá a repetir"
           option:  "ninguna"
       daily:
+        description:
+          one: "Todos los días"
+          other: "Cada %{count} días"
         form:
           option:  "diaria"
       weekly:
-         form:
-           every_week: "Cada %{form_field} semana(s) en los siguientes días:"
-           option: "semanal"
+        description:
+          one: "Todos los %{week_days}"
+          other: "Los %{week_days} de cada %{count} semanas"
+        form:
+          every_week: "Cada %{form_field} semana(s) en los siguientes días:"
+          option: "semanal"
       monthly:
-         form:
-           option: "mensual"
-           week_day: "El %{order_field} %{week_field} de cada %{interval_field} mes(es)"
-           week_day_order_option:
-             "1": "primer"
-             "2": "segundo"
-             "3": "tercer"
-             "-1": "último"
+        description:
+          one: "El %{week_day_order} %{ week_day } del mes"
+          other: "El %{week_day_order} %{ week_day } de cada %{count} meses"
+          week_day_order:
+            "1": "primer"
+            "2": "segundo"
+            "3": "tercer"
+            "-1": "último"
+        form:
+          option: "mensual"
+          week_day: "El %{order_field} %{week_field} de cada %{interval_field} mes(es)"
+          week_day_order_option:
+            "1": "primer"
+            "2": "segundo"
+            "3": "tercer"
+            "-1": "último"
