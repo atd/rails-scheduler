@@ -20,8 +20,8 @@ es:
           option: "semanal"
       monthly:
         description:
-          one: "El %{week_day_order} %{ week_day } del mes"
-          other: "El %{week_day_order} %{ week_day } de cada %{count} meses"
+          one: "El %{week_day_order} %{week_day} del mes"
+          other: "El %{week_day_order} %{week_day} de cada %{count} meses"
           week_day_order:
             "1": "primer"
             "2": "segundo"
