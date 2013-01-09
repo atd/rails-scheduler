@@ -12,7 +12,7 @@ Scheduler.form = (function($, undefined) {
 
     if (startDate) {
       var weekDay = (startDate.getDay() + 6) % 7; // monday is 0 in Rails
-      var weekDayOrder = Math.floor((startDate.getDate() - startDate.getDay() + 6) / 7);
+      var weekDayOrder = Math.floor((startDate.getDate() + 6) / 7);
       if (weekDayOrder > 3) {
         weekDayOrder = -1;
       }
