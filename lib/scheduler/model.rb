@@ -9,13 +9,13 @@ module Scheduler
 
       validates_presence_of :interval,
                             :if => lambda { |record|
-        [ :weekly ].include? record.frequency_sym
+        [ :weekly, :monthly ].include? record.frequency_sym
       }
       
       validates_numericality_of :days,
                                 :greater_than => 0,
                                 :if => lambda { |record|
-        [ :weekly ].include? record.frequency_sym
+        [ :weekly, :monthly ].include? record.frequency_sym
       }
 
       scope :between, lambda { |start_time, end_time|
